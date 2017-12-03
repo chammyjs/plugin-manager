@@ -20,9 +20,7 @@ class PluginManager {
 		}
 
 		const loaded = plugins.map( ( plugin ) => {
-			const module = require( plugin );
-
-			return module;
+			return require( plugin );
 		} );
 
 		return Promise.all( loaded );
