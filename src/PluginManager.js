@@ -1,5 +1,3 @@
-// const { Plugin } = require( '@chammy/plugin-helper' );
-
 function isString( value ) {
 	return typeof value === 'string';
 }
