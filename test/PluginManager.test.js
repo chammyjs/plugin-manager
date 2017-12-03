@@ -27,6 +27,11 @@ describe( 'PluginManager', () => {
 		expect( PluginManager.prototype ).to.have.property( Symbol.iterator );
 	} );
 
+	it( 'exposes find method', () => {
+		expect( PluginManager.prototype ).to.have.property( 'find' );
+		expect( PluginManager.prototype.find ).to.be.a( 'function' );
+	} );
+
 	it( 'exposes load method', () => {
 		expect( PluginManager.prototype ).to.have.property( 'load' );
 		expect( PluginManager.prototype.load ).to.be.a( 'function' );
@@ -78,6 +83,17 @@ describe( 'PluginManager', () => {
 
 			return expect( pluginManager.load( [ getPath( './fixtures/invalid' ) ] ) ).
 				to.be.eventually.rejectedWith( TypeError, 'Plugins must extend Plugin class' );
+		} );
+	} );
+
+	describe( 'find', () => {
+		it( 'returns Promise with absolute paths to found packages', () => {
+			const pluginManager = new PluginManager();
+
+			return pluginManager.find( '@test/*/', getPath( './fixtures' ) ).then( ( paths ) => {
+				expect( paths ).to.be.an( 'array' );
+				expect( paths ).to.deep.equal( [ getPath( './fixtures/@test/package' ) ] );
+			} );
 		} );
 	} );
 } );
