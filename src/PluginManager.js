@@ -38,6 +38,10 @@ class PluginManager {
 			throw new TypeError( 'pattern parameter must be a string or an array of strings' );
 		}
 
+		if ( !isString( path ) ) {
+			throw new TypeError( 'path parameter must be a string' );
+		}
+
 		if ( isString ( patterns ) ) {
 			patterns = [ patterns ];
 		}

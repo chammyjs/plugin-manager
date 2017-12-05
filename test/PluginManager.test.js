@@ -105,6 +105,23 @@ describe( 'PluginManager', () => {
 			} );
 		} );
 
+		it( 'accepts only string as 2. parameter', () => {
+			const pluginManager = new PluginManager();
+			const invalid = [
+				1,
+				null,
+				{},
+				[ 1, 2 ],
+				[ null ],
+			];
+
+			invalid.forEach( ( param ) => {
+				expect( () => {
+					pluginManager.find( '', param );
+				} ).to.throw( TypeError, 'path parameter must be a string' );
+			} );
+		} );
+
 		it( 'returns Promise with absolute paths to found packages (string)', () => {
 			const pluginManager = new PluginManager();
 
