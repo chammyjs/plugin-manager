@@ -87,7 +87,25 @@ describe( 'PluginManager', () => {
 	} );
 
 	describe( 'find', () => {
-		it( 'returns Promise with absolute paths to found packages', () => {
+		it( 'accepts only string or array of strings as 1. parameter', () => {
+			const pluginManager = new PluginManager();
+			const invalid = [
+				1,
+				undefined,
+				null,
+				{},
+				[ 1, 2 ],
+				[ null ],
+			];
+
+			invalid.forEach( ( param ) => {
+				expect( () => {
+					pluginManager.find( param );
+				} ).to.throw( TypeError, 'pattern parameter must be a string or an array of strings' );
+			} );
+		} );
+
+		it( 'returns Promise with absolute paths to found packages (string)', () => {
 			const pluginManager = new PluginManager();
 
 			return pluginManager.find( '@test/*/', getPath( './fixtures' ) ).then( ( paths ) => {
@@ -95,5 +113,21 @@ describe( 'PluginManager', () => {
 				expect( paths ).to.deep.equal( [ getPath( './fixtures/@test/package' ) ] );
 			} );
 		} );
+
+		it( 'returns Promise with absolute paths to found packages (array of strings)', () => {
+			const pluginManager = new PluginManager();
+			const expected = [
+				getPath( './fixtures/@test/package' ),
+				getPath( './fixtures/test-1' ),
+				getPath( './fixtures/test-2' )
+			];
+
+			return pluginManager.find( [ '@test/*/', 'test-*' ], getPath( './fixtures' ) ).then( ( paths ) => {
+				expect( paths ).to.be.an( 'array' );
+				expect( paths ).to.have.lengthOf( 3 );
+				expect( paths ).to.have.members( expected );
+			} );
+		} );
+
 	} );
 } );
