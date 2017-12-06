@@ -17,6 +17,13 @@ function createParameterTest( { invalid = [], test = () => {}, errorType = TypeE
 	}
 }
 
+function createMethodTest( object, method ) {
+	return() => {
+		expect( object ).to.have.property( method );
+		expect( object[ method ] ).to.be.a( 'function' );
+	};
+}
+
 function getPath( name ) {
 	return `${ join(  __dirname, name ) }`;
 }
@@ -33,24 +40,13 @@ describe( 'PluginManager', () => {
 		expect( pluginManager.plugins ).to.be.an( 'array' );
 	} );
 
-	it( 'exposes iterator', () => {
-		expect( PluginManager.prototype ).to.have.property( Symbol.iterator );
-	} );
+	it( 'exposes iterator', createMethodTest( PluginManager.prototype, Symbol.iterator ) );
 
-	it( 'exposes find method', () => {
-		expect( PluginManager.prototype ).to.have.property( 'find' );
-		expect( PluginManager.prototype.find ).to.be.a( 'function' );
-	} );
+	it( 'exposes find method', createMethodTest( PluginManager.prototype, 'find' ) );
 
-	it( 'exposes load method', () => {
-		expect( PluginManager.prototype ).to.have.property( 'load' );
-		expect( PluginManager.prototype.load ).to.be.a( 'function' );
-	} );
+	it( 'exposes load method', createMethodTest( PluginManager.prototype, 'load' ) );
 
-	it( 'exposes findAndLoad method', () => {
-		expect( PluginManager.prototype ).to.have.property( 'findAndLoad' );
-		expect( PluginManager.prototype.findAndLoad ).to.be.a( 'function' );
-	} );
+	it( 'exposes findAndLoad method', createMethodTest( PluginManager.prototype, 'findAndLoad' ) );
 
 	describe( 'iterator', () => {
 		it( 'iterates through plugins property', () => {
