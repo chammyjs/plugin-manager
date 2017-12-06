@@ -24,6 +24,23 @@ function createMethodTest( object, method ) {
 	};
 }
 
+function createLoadTest( paths, pluginsPropertyValue ) {
+	return () => {
+		const pluginManager = new PluginManager();
+
+		return pluginManager.load( paths ).then( ( plugins ) => {
+			expect( plugins ).to.be.an( 'array' );
+			expect( plugins ).to.have.lengthOf( paths.length );
+
+			plugins.forEach( ( plugin ) => {
+				expect( Reflect.getPrototypeOf( plugin ) ).to.equal( Plugin );
+			} );
+
+			expect( [ ...pluginManager.plugins ] ).to.deep.equal( pluginsPropertyValue || plugins );
+		} );
+	};
+}
+
 function createFindPathTest( { patterns = '', path = undefined, expected = [] } = {} ) {
 	return () => {
 		const pluginManager = new PluginManager();
@@ -91,28 +108,11 @@ describe( 'PluginManager', () => {
 			errorMsg: 'Parameter must be an array of strings'
 		} ) );
 
-		it( 'returns Promise with resolved modules array', () => {
-			const pluginManager = new PluginManager();
+		it( 'returns Promise with resolved modules array', createLoadTest( [ getPath( './fixtures/test' ) ] ) );
 
-			return pluginManager.load( [ getPath( './fixtures/test' ) ] ).then( ( plugins ) => {
-				expect( plugins ).to.be.an( 'array' );
-				expect( plugins ).to.have.lengthOf( 1 );
-				expect( Reflect.getPrototypeOf( plugins[ 0 ] ) ).to.equal( Plugin );
-				expect( [ ...pluginManager.plugins ] ).to.deep.equal( plugins );
-			} );
-		} );
-
-		it( 'does not pollute plugins property with duplicates', () => {
-			const pluginManager = new PluginManager();
-
-			return pluginManager.load( [ ,, ].fill( getPath( './fixtures/test' ) ) ).then( ( plugins ) => {
-				expect( plugins ).to.be.an( 'array' );
-				expect( plugins ).to.have.lengthOf( 2 );
-				expect( Reflect.getPrototypeOf( plugins[ 0 ] ) ).to.equal( Plugin );
-				expect( Reflect.getPrototypeOf( plugins[ 1 ] ) ).to.equal( Plugin );
-				expect( [ ...pluginManager.plugins ] ).to.deep.equal( [ plugins[ 0 ] ] );
-			} );
-		} );
+		it( 'does not pollute plugins property with duplicates',
+			createLoadTest( [ ,, ].fill( getPath( './fixtures/test' ) ),
+				[ require( getPath( './fixtures/test' ) ) ] ) );
 
 		it( 'rejects if loaded module is not extending Plugin', () => {
 			const pluginManager = new PluginManager();
