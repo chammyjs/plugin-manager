@@ -81,6 +81,19 @@ class PluginManager {
 		return Promise.all( loaded );
 	}
 
+	/**
+	 * Finds packages matching given patterns and loads them.
+	 *
+	 * @param {string/string[]} patterns Glob patterns.
+	 * @param {string} path Path in which the search will be done.
+	 * @returns {Promise}
+	 */
+	findAndLoad( patterns, path = process.cwd() ) {
+		return this.find( patterns, path ).then( ( paths ) => {
+			return this.load( paths );
+		} );
+	}
+
 	[ Symbol.iterator ]() {
 		return this.plugins[ Symbol.iterator ]();
 	}
