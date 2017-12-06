@@ -49,7 +49,7 @@ describe( 'PluginManager', () => {
 		const pluginManager = new PluginManager();
 
 		expect( pluginManager ).to.have.own.property( 'plugins' );
-		expect( pluginManager.plugins ).to.be.an( 'array' );
+		expect( pluginManager.plugins ).to.be.an.instanceOf( Set );
 	} );
 
 	it( 'exposes iterator', createMethodTest( PluginManager.prototype, Symbol.iterator ) );
@@ -98,6 +98,19 @@ describe( 'PluginManager', () => {
 				expect( plugins ).to.be.an( 'array' );
 				expect( plugins ).to.have.lengthOf( 1 );
 				expect( Reflect.getPrototypeOf( plugins[ 0 ] ) ).to.equal( Plugin );
+				expect( [ ...pluginManager.plugins ] ).to.deep.equal( plugins );
+			} );
+		} );
+
+		it( 'does not pollute plugins property with duplicates', () => {
+			const pluginManager = new PluginManager();
+
+			return pluginManager.load( [ ,, ].fill( getPath( './fixtures/test' ) ) ).then( ( plugins ) => {
+				expect( plugins ).to.be.an( 'array' );
+				expect( plugins ).to.have.lengthOf( 2 );
+				expect( Reflect.getPrototypeOf( plugins[ 0 ] ) ).to.equal( Plugin );
+				expect( Reflect.getPrototypeOf( plugins[ 1 ] ) ).to.equal( Plugin );
+				expect( [ ...pluginManager.plugins ] ).to.deep.equal( [ plugins[ 0 ] ] );
 			} );
 		} );
 
@@ -182,6 +195,7 @@ describe( 'PluginManager', () => {
 				expect( plugins ).to.be.an( 'array' );
 				expect( plugins ).to.have.lengthOf( 1 );
 				expect( Reflect.getPrototypeOf( plugins[ 0 ] ) ).to.equal( Plugin );
+				expect( [ ...pluginManager.plugins] ).to.deep.equal( plugins );
 			} );
 		} );
 	} );

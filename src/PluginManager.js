@@ -23,7 +23,7 @@ function makeGlobPromise( pattern, path ) {
 
 class PluginManager {
 	constructor() {
-		this.plugins = [];
+		this.plugins = new Set();
 	}
 
 	/**
@@ -74,6 +74,8 @@ class PluginManager {
 			if ( Reflect.getPrototypeOf( module ) !== Plugin ) {
 				return Promise.reject( new TypeError( 'Plugins must extend Plugin class' ) );
 			}
+
+			this.plugins.add( module );
 
 			return module;
 		} );
