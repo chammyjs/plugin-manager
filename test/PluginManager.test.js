@@ -24,6 +24,18 @@ function createMethodTest( object, method ) {
 	};
 }
 
+function createFindPathTest( { patterns = '', path = undefined, expected = [] } = {} ) {
+	return () => {
+		const pluginManager = new PluginManager();
+
+		return pluginManager.find( patterns, path ).then( ( paths ) => {
+			expect( paths ).to.be.an( 'array' );
+			expect( paths ).to.have.lengthOf( expected.length );
+			expect( paths ).to.have.members( expected );
+		} );
+	};
+}
+
 function getPath( name ) {
 	return `${ join(  __dirname, name ) }`;
 }
@@ -133,29 +145,33 @@ describe( 'PluginManager', () => {
 			errorMsg: 'path parameter must be a string'
 		} ) );
 
-		it( 'returns Promise with absolute paths to found packages (string)', () => {
-			const pluginManager = new PluginManager();
+		it( 'returns Promise with absolute paths to found packages (string)', createFindPathTest( {
+			patterns:'@test/*/',
+			path: getPath( './fixtures' ),
+			expected: [
+				getPath( './fixtures/@test/package' )
+			]
+		} ) );
 
-			return pluginManager.find( '@test/*/', getPath( './fixtures' ) ).then( ( paths ) => {
-				expect( paths ).to.be.an( 'array' );
-				expect( paths ).to.deep.equal( [ getPath( './fixtures/@test/package' ) ] );
-			} );
-		} );
+		it( 'returns Promise with empty array if path is default (string)', createFindPathTest( {
+			patterns: '@test/*/',
+			expected: []
+		} ) );
 
-		it( 'returns Promise with absolute paths to found packages (array of strings)', () => {
-			const pluginManager = new PluginManager();
-			const expected = [
+		it( 'returns Promise with absolute paths to found packages (array of strings)', createFindPathTest( {
+			patterns: [ '@test/*/', 'test-*' ],
+			path: getPath( './fixtures' ),
+			expected: [
 				getPath( './fixtures/@test/package' ),
 				getPath( './fixtures/test-1' ),
 				getPath( './fixtures/test-2' )
-			];
+			]
+		} ) );
 
-			return pluginManager.find( [ '@test/*/', 'test-*' ], getPath( './fixtures' ) ).then( ( paths ) => {
-				expect( paths ).to.be.an( 'array' );
-				expect( paths ).to.have.lengthOf( 3 );
-				expect( paths ).to.have.members( expected );
-			} );
-		} );
+		it( 'returns Promise with empty array if path is default (array of strings)', createFindPathTest( {
+			patterns: [ '@test/*/', 'test-*' ],
+			expected: []
+		} ) );
 	} );
 
 	describe( 'findAndLoad', () => {
