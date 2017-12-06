@@ -1,7 +1,11 @@
 const PluginManager = require( '../src/PluginManager' );
+const { Plugin } = require( '@chammy/plugin-helper' );
 const chai = require( 'chai' );
+const chaiAsPromised = require( 'chai-as-promised' );
 const { join } = require( 'path' );
 const expect = chai.expect;
+
+chai.use( chaiAsPromised );
 
 function getPath( name ) {
 	return `${ join(  __dirname, name ) }`;
@@ -65,7 +69,15 @@ describe( 'PluginManager', () => {
 			return pluginManager.load( [ getPath( './fixtures/test' ) ] ).then( ( plugins ) => {
 				expect( plugins ).to.be.an( 'array' );
 				expect( plugins ).to.have.lengthOf( 1 );
+				expect( Reflect.getPrototypeOf( plugins[ 0 ] ) ).to.equal( Plugin );
 			} );
+		} );
+
+		it( 'rejects if loaded module is not extending Plugin', () => {
+			const pluginManager = new PluginManager();
+
+			return expect( pluginManager.load( [ getPath( './fixtures/invalid' ) ] ) ).
+				to.be.eventually.rejectedWith( TypeError, 'Plugins must extend Plugin class' );
 		} );
 	} );
 } );
