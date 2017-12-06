@@ -14,11 +14,11 @@ function createParameterTest( { invalid = [], test = () => {}, errorType = TypeE
 				test( param );
 			} ).to.throw( errorType, errorMsg );
 		} );
-	}
+	};
 }
 
 function createMethodTest( object, method ) {
-	return() => {
+	return () => {
 		expect( object ).to.have.property( method );
 		expect( object[ method ] ).to.be.a( 'function' );
 	};
@@ -111,7 +111,7 @@ describe( 'PluginManager', () => {
 		it( 'returns Promise with resolved modules array', createLoadTest( [ getPath( './fixtures/test' ) ] ) );
 
 		it( 'does not pollute plugins property with duplicates',
-			createLoadTest( [ ,, ].fill( getPath( './fixtures/test' ) ),
+			createLoadTest( [ 0, 1 ].fill( getPath( './fixtures/test' ) ),
 				[ require( getPath( './fixtures/test' ) ) ] ) );
 
 		it( 'rejects if loaded module is not extending Plugin', () => {
@@ -159,7 +159,7 @@ describe( 'PluginManager', () => {
 		} ) );
 
 		it( 'returns Promise with absolute paths to found packages (string)', createFindPathTest( {
-			patterns:'@test/*/',
+			patterns: '@test/*/',
 			path: getPath( './fixtures' ),
 			expected: [
 				getPath( './fixtures/@test/package' )
@@ -195,7 +195,7 @@ describe( 'PluginManager', () => {
 				expect( plugins ).to.be.an( 'array' );
 				expect( plugins ).to.have.lengthOf( 1 );
 				expect( Reflect.getPrototypeOf( plugins[ 0 ] ) ).to.equal( Plugin );
-				expect( [ ...pluginManager.plugins] ).to.deep.equal( plugins );
+				expect( [ ...pluginManager.plugins ] ).to.deep.equal( plugins );
 			} );
 		} );
 	} );

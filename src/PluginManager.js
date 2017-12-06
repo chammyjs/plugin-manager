@@ -20,7 +20,6 @@ function makeGlobPromise( pattern, path ) {
 	} );
 }
 
-
 class PluginManager {
 	constructor() {
 		this.plugins = new Set();
@@ -31,10 +30,10 @@ class PluginManager {
 	 *
 	 * @param {string/string[]} patterns Glob patterns.
 	 * @param {string} path Path in which the search will be done.
-	 * @returns {Promise}
+	 * @returns {Promise} Promise resolving to array of paths.
 	 */
 	find( patterns, path = process.cwd() ) {
-		if ( !isString( patterns ) && ( !Array.isArray( patterns ) || !patterns.every( isString )) ) {
+		if ( !isString( patterns ) && ( !Array.isArray( patterns ) || !patterns.every( isString ) ) ) {
 			throw new TypeError( 'pattern parameter must be a string or an array of strings' );
 		}
 
@@ -61,7 +60,7 @@ class PluginManager {
 	 * Load given plugins.
 	 *
 	 * @param {string[]} plugins Names of plugins to load.
-	 * @returns {Promise}
+	 * @returns {Promise} Promise resolving to array of plugin classes.
 	 */
 	load( plugins ) {
 		if ( !Array.isArray( plugins ) || !plugins.every( isString ) ) {
@@ -88,7 +87,7 @@ class PluginManager {
 	 *
 	 * @param {string/string[]} patterns Glob patterns.
 	 * @param {string} path Path in which the search will be done.
-	 * @returns {Promise}
+	 * @returns {Promise} Promise resolving to array of plugin classes.
 	 */
 	findAndLoad( patterns, path = process.cwd() ) {
 		return this.find( patterns, path ).then( ( paths ) => {

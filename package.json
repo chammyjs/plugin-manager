@@ -4,6 +4,8 @@
   "description": "Simple plugin manager for Chammy.js",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint src/**/*.js test/*.js",
+    "pretest": "npm run lint",
     "test": "mocha --reporter=nyan --require babel-register"
   },
   "repository": {
