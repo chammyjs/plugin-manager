@@ -7,6 +7,16 @@ const expect = chai.expect;
 
 chai.use( chaiAsPromised );
 
+function createParameterTest( { invalid = [], test = () => {}, errorType = TypeError, errorMsg = '' } = {} ) {
+	return () => {
+		invalid.forEach( ( param ) => {
+			expect( () => {
+				test( param );
+			} ).to.throw( errorType, errorMsg );
+		} );
+	}
+}
+
 function getPath( name ) {
 	return `${ join(  __dirname, name ) }`;
 }
@@ -49,9 +59,8 @@ describe( 'PluginManager', () => {
 	} );
 
 	describe( 'load', () => {
-		it( 'accepts only array of string as parameter', () => {
-			const pluginManager = new PluginManager();
-			const invalid = [
+		it( 'accepts only array of string as parameter', createParameterTest( {
+			invalid: [
 				'test',
 				1,
 				undefined,
@@ -59,14 +68,15 @@ describe( 'PluginManager', () => {
 				{},
 				[ 1, 2 ],
 				[ null ]
-			];
+			],
+			test: ( param ) => {
+				const pluginManager = new PluginManager();
 
-			invalid.forEach( ( param ) => {
-				expect( () => {
-					pluginManager.load( param );
-				} ).to.throw( TypeError, 'Parameter must be an array of strings' );
-			} );
-		} );
+				pluginManager.load( param );
+			},
+			errorType: TypeError,
+			errorMsg: 'Parameter must be an array of strings'
+		} ) );
 
 		it( 'returns Promise with resolved modules array', () => {
 			const pluginManager = new PluginManager();
@@ -87,40 +97,40 @@ describe( 'PluginManager', () => {
 	} );
 
 	describe( 'find', () => {
-		it( 'accepts only string or array of strings as 1. parameter', () => {
-			const pluginManager = new PluginManager();
-			const invalid = [
+		it( 'accepts only string or array of strings as 1. parameter', createParameterTest( {
+			invalid: [
 				1,
 				undefined,
 				null,
 				{},
 				[ 1, 2 ],
 				[ null ],
-			];
+			],
+			test: ( param ) => {
+				const pluginManager = new PluginManager();
 
-			invalid.forEach( ( param ) => {
-				expect( () => {
-					pluginManager.find( param );
-				} ).to.throw( TypeError, 'pattern parameter must be a string or an array of strings' );
-			} );
-		} );
+				pluginManager.find( param );
+			},
+			errorType: TypeError,
+			errorMsg: 'pattern parameter must be a string or an array of strings'
+		} ) );
 
-		it( 'accepts only string as 2. parameter', () => {
-			const pluginManager = new PluginManager();
-			const invalid = [
+		it( 'accepts only string as 2. parameter', createParameterTest( {
+			invalid: [
 				1,
 				null,
 				{},
 				[ 1, 2 ],
 				[ null ],
-			];
+			],
+			test: ( param ) => {
+				const pluginManager = new PluginManager();
 
-			invalid.forEach( ( param ) => {
-				expect( () => {
-					pluginManager.find( '', param );
-				} ).to.throw( TypeError, 'path parameter must be a string' );
-			} );
-		} );
+				pluginManager.find( '', param );
+			},
+			errorType: TypeError,
+			errorMsg: 'path parameter must be a string'
+		} ) );
 
 		it( 'returns Promise with absolute paths to found packages (string)', () => {
 			const pluginManager = new PluginManager();
