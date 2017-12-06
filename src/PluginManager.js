@@ -1,3 +1,5 @@
+const { Plugin } = require( '@chammy/plugin-helper' );
+
 function isString( value ) {
 	return typeof value === 'string';
 }
@@ -20,7 +22,13 @@ class PluginManager {
 		}
 
 		const loaded = plugins.map( ( plugin ) => {
-			return require( plugin );
+			const module = require( plugin );
+
+			if ( Reflect.getPrototypeOf( module ) !== Plugin ) {
+				return Promise.reject( new TypeError( 'Plugins must extend Plugin class' ) );
+			}
+
+			return module;
 		} );
 
 		return Promise.all( loaded );
