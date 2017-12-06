@@ -142,6 +142,14 @@ describe( 'PluginManager', () => {
 			} );
 		} );
 
+		it( 'returns Promise with empty array if path is default (string)', () => {
+			const pluginManager = new PluginManager();
+
+			return pluginManager.find( '@test/*/' ).then( ( paths ) => {
+				expect( paths ).to.deep.equal( [] );
+			} );
+		} );
+
 		it( 'returns Promise with absolute paths to found packages (array of strings)', () => {
 			const pluginManager = new PluginManager();
 			const expected = [
@@ -154,6 +162,14 @@ describe( 'PluginManager', () => {
 				expect( paths ).to.be.an( 'array' );
 				expect( paths ).to.have.lengthOf( 3 );
 				expect( paths ).to.have.members( expected );
+			} );
+		} );
+
+		it( 'returns Promise with empty array if path is default (array of strings)', () => {
+			const pluginManager = new PluginManager();
+
+			return pluginManager.find( [ '@test/*/', 'test-*' ] ).then( ( paths ) => {
+				expect( paths ).to.deep.equal( [] );
 			} );
 		} );
 	} );
