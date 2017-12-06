@@ -1,13 +1,60 @@
+const glob = require( 'glob' );
 const { Plugin } = require( '@chammy/plugin-helper' );
 
 function isString( value ) {
 	return typeof value === 'string';
 }
 
+function makeGlobPromise( pattern, path ) {
+	return new Promise( ( resolve, reject ) => {
+		glob( pattern, {
+			cwd: path,
+			absolute: true
+		}, ( err, files ) => {
+			if ( err ) {
+				reject( err );
+			}
+
+			resolve( files );
+		} );
+	} );
+}
+
 
 class PluginManager {
 	constructor() {
 		this.plugins = [];
+	}
+
+	/**
+	 * Find packages matching the given names.
+	 *
+	 * @param {string/string[]} patterns Glob patterns.
+	 * @param {string} path Path in which the search will be done.
+	 * @returns {Promise}
+	 */
+	find( patterns, path = process.cwd() ) {
+		if ( !isString( patterns ) && ( !Array.isArray( patterns ) || !patterns.every( isString )) ) {
+			throw new TypeError( 'pattern parameter must be a string or an array of strings' );
+		}
+
+		if ( !isString( path ) ) {
+			throw new TypeError( 'path parameter must be a string' );
+		}
+
+		if ( isString ( patterns ) ) {
+			patterns = [ patterns ];
+		}
+
+		const promises = patterns.map( ( pattern ) => {
+			return makeGlobPromise( pattern, path );
+		} );
+
+		return Promise.all( promises ).then( ( result ) => {
+			return result.reduce( ( all, current ) => {
+				return all.concat( current );
+			}, [] );
+		} );
 	}
 
 	/**

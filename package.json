@@ -30,6 +30,7 @@
     "mocha": "^4.0.1"
   },
   "dependencies": {
-    "@chammy/plugin-helper": "github:chammyjs/plugin-helper"
+    "@chammy/plugin-helper": "github:chammyjs/plugin-helper",
+    "glob": "^7.1.2"
   }
 }
