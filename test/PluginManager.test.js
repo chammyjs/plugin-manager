@@ -47,6 +47,11 @@ describe( 'PluginManager', () => {
 		expect( PluginManager.prototype.load ).to.be.a( 'function' );
 	} );
 
+	it( 'exposes findAndLoad method', () => {
+		expect( PluginManager.prototype ).to.have.property( 'findAndLoad' );
+		expect( PluginManager.prototype.findAndLoad ).to.be.a( 'function' );
+	} );
+
 	describe( 'iterator', () => {
 		it( 'iterates through plugins property', () => {
 			const pluginManager = new PluginManager();
@@ -155,6 +160,17 @@ describe( 'PluginManager', () => {
 				expect( paths ).to.have.members( expected );
 			} );
 		} );
+	} );
 
+	describe( 'findAndLoad', () => {
+		it( 'returns Promise with resolved modules array', () => {
+			const pluginManager = new PluginManager();
+
+			return pluginManager.findAndLoad( '@test/*/', getPath( './fixtures' ) ).then( ( plugins ) => {
+				expect( plugins ).to.be.an( 'array' );
+				expect( plugins ).to.have.lengthOf( 1 );
+				expect( Reflect.getPrototypeOf( plugins[ 0 ] ) ).to.equal( Plugin );
+			} );
+		} );
 	} );
 } );
