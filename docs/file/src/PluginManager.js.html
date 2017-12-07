@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/PluginManager.js | @chammy/plugin-manager</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Simple plugin manager for Chammy.js"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@chammy/plugin-manager"><meta property="twitter:description" content="Simple plugin manager for Chammy.js"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/chammyjs/plugin-manager"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/PluginManager.js~PluginManager.html">PluginManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/chammyjs/plugin-helper">Plugin</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/PluginManager.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * @external {Plugin} https://github.com/chammyjs/plugin-helper
+ */
+
+import glob from &apos;glob&apos;;
+import { Plugin } from &apos;@chammy/plugin-helper&apos;;
+
+function isString( value ) {
+	return typeof value === &apos;string&apos;;
+}
+
+function makeGlobPromise( pattern, path ) {
+	return new Promise( ( resolve, reject ) =&gt; {
+		glob( pattern, {
+			cwd: path,
+			absolute: true
+		}, ( err, files ) =&gt; {
+			if ( err ) {
+				reject( err );
+			}
+
+			resolve( files );
+		} );
+	} );
+}
+
+/**
+ * Simple plugin manager for Chammy.js.
+ * It&apos;s responsible for finding and loading plugins.
+ */
+class PluginManager {
+	constructor() {
+		/**
+		 * Iterable set of all loaded plugins.
+		 *
+		 * @type {Set&lt;Plugin&gt;}
+		 */
+		this.plugins = new Set();
+	}
+
+	/**
+	 * Find packages matching the given names.
+	 *
+	 * @param {string|string[]} patterns Glob patterns.
+	 * @param {string} path Path in which the search will be done.
+	 * @throws {TypeError}
+	 * @returns {Promise&lt;string[],Error&gt;} Promise resolving to array of paths.
+	 */
+	find( patterns, path = process.cwd() ) {
+		if ( !isString( patterns ) &amp;&amp; ( !Array.isArray( patterns ) || !patterns.every( isString ) ) ) {
+			throw new TypeError( &apos;pattern parameter must be a string or an array of strings&apos; );
+		}
+
+		if ( !isString( path ) ) {
+			throw new TypeError( &apos;path parameter must be a string&apos; );
+		}
+
+		if ( isString ( patterns ) ) {
+			patterns = [ patterns ];
+		}
+
+		const promises = patterns.map( ( pattern ) =&gt; {
+			return makeGlobPromise( pattern, path );
+		} );
+
+		return Promise.all( promises ).then( ( result ) =&gt; {
+			return result.reduce( ( all, current ) =&gt; {
+				return all.concat( current );
+			}, [] );
+		} );
+	}
+
+	/**
+	 * Load given plugins.
+	 *
+	 * @param {string[]} plugins Names of plugins to load.
+	 * @throws {TypeError}
+	 * @returns {Promise&lt;Plugin[],TypeError&gt;} Promise resolving to array of plugin classes.
+	 */
+	load( plugins ) {
+		if ( !Array.isArray( plugins ) || !plugins.every( isString ) ) {
+			throw new TypeError( &apos;Parameter must be an array of strings&apos; );
+		}
+
+		const loaded = plugins.map( ( plugin ) =&gt; {
+			const module = require( plugin );
+
+			if ( Reflect.getPrototypeOf( module ) !== Plugin ) {
+				return Promise.reject( new TypeError( &apos;Plugins must extend Plugin class&apos; ) );
+			}
+
+			this.plugins.add( module );
+
+			return module;
+		} );
+
+		return Promise.all( loaded );
+	}
+
+	/**
+	 * Finds packages matching given patterns and loads them.
+	 *
+	 * @param {string|string[]} patterns Glob patterns.
+	 * @param {string} path Path in which the search will be done.
+	 * @returns {Promise&lt;Plugin[],TypeError&gt;} Promise resolving to array of plugin classes.
+	 */
+	findAndLoad( patterns, path = process.cwd() ) {
+		return this.find( patterns, path ).then( ( paths ) =&gt; {
+			return this.load( paths );
+		} );
+	}
+
+	/**
+	 * Allows to iterate over all plugins loaded by given
+	 * PluginManager instance.
+	 *
+	 * @returns {Iterator} Iterator for {@link PluginManager#plugins} property.
+	 */
+	[ Symbol.iterator ]() {
+		return this.plugins[ Symbol.iterator ]();
+	}
+}
+
+export default PluginManager;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

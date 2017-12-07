@@ -1,0 +1,915 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/PluginManager.js",
+    "content": "/**\n * @external {Plugin} https://github.com/chammyjs/plugin-helper\n */\n\nimport glob from 'glob';\nimport { Plugin } from '@chammy/plugin-helper';\n\nfunction isString( value ) {\n\treturn typeof value === 'string';\n}\n\nfunction makeGlobPromise( pattern, path ) {\n\treturn new Promise( ( resolve, reject ) => {\n\t\tglob( pattern, {\n\t\t\tcwd: path,\n\t\t\tabsolute: true\n\t\t}, ( err, files ) => {\n\t\t\tif ( err ) {\n\t\t\t\treject( err );\n\t\t\t}\n\n\t\t\tresolve( files );\n\t\t} );\n\t} );\n}\n\n/**\n * Simple plugin manager for Chammy.js.\n * It's responsible for finding and loading plugins.\n */\nclass PluginManager {\n\tconstructor() {\n\t\t/**\n\t\t * Iterable set of all loaded plugins.\n\t\t *\n\t\t * @type {Set<Plugin>}\n\t\t */\n\t\tthis.plugins = new Set();\n\t}\n\n\t/**\n\t * Find packages matching the given names.\n\t *\n\t * @param {string|string[]} patterns Glob patterns.\n\t * @param {string} path Path in which the search will be done.\n\t * @throws {TypeError}\n\t * @returns {Promise<string[],Error>} Promise resolving to array of paths.\n\t */\n\tfind( patterns, path = process.cwd() ) {\n\t\tif ( !isString( patterns ) && ( !Array.isArray( patterns ) || !patterns.every( isString ) ) ) {\n\t\t\tthrow new TypeError( 'pattern parameter must be a string or an array of strings' );\n\t\t}\n\n\t\tif ( !isString( path ) ) {\n\t\t\tthrow new TypeError( 'path parameter must be a string' );\n\t\t}\n\n\t\tif ( isString ( patterns ) ) {\n\t\t\tpatterns = [ patterns ];\n\t\t}\n\n\t\tconst promises = patterns.map( ( pattern ) => {\n\t\t\treturn makeGlobPromise( pattern, path );\n\t\t} );\n\n\t\treturn Promise.all( promises ).then( ( result ) => {\n\t\t\treturn result.reduce( ( all, current ) => {\n\t\t\t\treturn all.concat( current );\n\t\t\t}, [] );\n\t\t} );\n\t}\n\n\t/**\n\t * Load given plugins.\n\t *\n\t * @param {string[]} plugins Names of plugins to load.\n\t * @throws {TypeError}\n\t * @returns {Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes.\n\t */\n\tload( plugins ) {\n\t\tif ( !Array.isArray( plugins ) || !plugins.every( isString ) ) {\n\t\t\tthrow new TypeError( 'Parameter must be an array of strings' );\n\t\t}\n\n\t\tconst loaded = plugins.map( ( plugin ) => {\n\t\t\tconst module = require( plugin );\n\n\t\t\tif ( Reflect.getPrototypeOf( module ) !== Plugin ) {\n\t\t\t\treturn Promise.reject( new TypeError( 'Plugins must extend Plugin class' ) );\n\t\t\t}\n\n\t\t\tthis.plugins.add( module );\n\n\t\t\treturn module;\n\t\t} );\n\n\t\treturn Promise.all( loaded );\n\t}\n\n\t/**\n\t * Finds packages matching given patterns and loads them.\n\t *\n\t * @param {string|string[]} patterns Glob patterns.\n\t * @param {string} path Path in which the search will be done.\n\t * @returns {Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes.\n\t */\n\tfindAndLoad( patterns, path = process.cwd() ) {\n\t\treturn this.find( patterns, path ).then( ( paths ) => {\n\t\t\treturn this.load( paths );\n\t\t} );\n\t}\n\n\t/**\n\t * Allows to iterate over all plugins loaded by given\n\t * PluginManager instance.\n\t *\n\t * @returns {Iterator} Iterator for {@link PluginManager#plugins} property.\n\t */\n\t[ Symbol.iterator ]() {\n\t\treturn this.plugins[ Symbol.iterator ]();\n\t}\n}\n\nexport default PluginManager;\n",
+    "static": true,
+    "longname": "/home/comandeer/repos/chammy/plugin-manager/src/PluginManager.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "name": "Plugin",
+    "externalLink": "https://github.com/chammyjs/plugin-helper",
+    "memberof": "src/PluginManager.js",
+    "static": true,
+    "longname": "src/PluginManager.js~Plugin",
+    "access": "public",
+    "description": "",
+    "lineNumber": 5
+  },
+  {
+    "__docId__": 50,
+    "kind": "function",
+    "name": "isString",
+    "memberof": "src/PluginManager.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/PluginManager.js~isString",
+    "access": "public",
+    "export": false,
+    "importPath": "@chammy/plugin-manager/src/PluginManager.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "function",
+    "name": "makeGlobPromise",
+    "memberof": "src/PluginManager.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/PluginManager.js~makeGlobPromise",
+    "access": "public",
+    "export": false,
+    "importPath": "@chammy/plugin-manager/src/PluginManager.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "pattern",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "path",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "class",
+    "name": "PluginManager",
+    "memberof": "src/PluginManager.js",
+    "static": true,
+    "longname": "src/PluginManager.js~PluginManager",
+    "access": "public",
+    "export": true,
+    "importPath": "@chammy/plugin-manager/src/PluginManager.js",
+    "importStyle": "PluginManager",
+    "description": "Simple plugin manager for Chammy.js.\nIt's responsible for finding and loading plugins.",
+    "lineNumber": 31,
+    "interface": false
+  },
+  {
+    "__docId__": 53,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/PluginManager.js~PluginManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PluginManager.js~PluginManager#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "member",
+    "name": "plugins",
+    "memberof": "src/PluginManager.js~PluginManager",
+    "static": false,
+    "longname": "src/PluginManager.js~PluginManager#plugins",
+    "access": "public",
+    "description": "Iterable set of all loaded plugins.",
+    "lineNumber": 38,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Set<Plugin>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "method",
+    "name": "find",
+    "memberof": "src/PluginManager.js~PluginManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PluginManager.js~PluginManager#find",
+    "access": "public",
+    "description": "Find packages matching the given names.",
+    "lineNumber": 49,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<string[],Error>} Promise resolving to array of paths."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "patterns",
+        "description": "Glob patterns."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": "Path in which the search will be done."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string[],Error>"
+      ],
+      "spread": false,
+      "description": "Promise resolving to array of paths."
+    },
+    "throws": [
+      {
+        "types": [
+          "TypeError"
+        ],
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "load",
+    "memberof": "src/PluginManager.js~PluginManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PluginManager.js~PluginManager#load",
+    "access": "public",
+    "description": "Load given plugins.",
+    "lineNumber": 80,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "plugins",
+        "description": "Names of plugins to load."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Plugin[],TypeError>"
+      ],
+      "spread": false,
+      "description": "Promise resolving to array of plugin classes."
+    },
+    "throws": [
+      {
+        "types": [
+          "TypeError"
+        ],
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "findAndLoad",
+    "memberof": "src/PluginManager.js~PluginManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PluginManager.js~PluginManager#findAndLoad",
+    "access": "public",
+    "description": "Finds packages matching given patterns and loads them.",
+    "lineNumber": 107,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "string[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "patterns",
+        "description": "Glob patterns."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": "Path in which the search will be done."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Plugin[],TypeError>"
+      ],
+      "spread": false,
+      "description": "Promise resolving to array of plugin classes."
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "[Symbol.iterator]",
+    "memberof": "src/PluginManager.js~PluginManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PluginManager.js~PluginManager#[Symbol.iterator]",
+    "access": "public",
+    "description": "Allows to iterate over all plugins loaded by given\nPluginManager instance.",
+    "lineNumber": 119,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Iterator} Iterator for {@link PluginManager#plugins} property."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Iterator"
+      ],
+      "spread": false,
+      "description": "Iterator for {@link PluginManager#plugins} property."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 59,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "import PluginManager from './PluginManager.js';\n\nexport default PluginManager;\n",
+    "static": true,
+    "longname": "/home/comandeer/repos/chammy/plugin-manager/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "kind": "index",
+    "content": "# @chammy/plugin-manager\n\n[![Greenkeeper badge](https://badges.greenkeeper.io/chammyjs/plugin-manager.svg)](https://greenkeeper.io/)\n[![dependencies Status](https://david-dm.org/chammyjs/plugin-manager/status.svg)](https://david-dm.org/chammyjs/plugin-manager)\n[![devDependencies Status](https://david-dm.org/chammyjs/plugin-manager/dev-status.svg)](https://david-dm.org/chammyjs/plugin-manager?type=dev)\n[![Build Status](https://travis-ci.org/chammyjs/plugin-manager.svg?branch=master)](https://travis-ci.org/chammyjs/plugin-manager)\n\nSimple plugin manager for [Chammy.js](https://github.com/chammyjs/chammy).\n",
+    "longname": "/home/comandeer/repos/chammy/plugin-manager/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"@chammy/plugin-manager\",\n  \"version\": \"0.0.0\",\n  \"description\": \"Simple plugin manager for Chammy.js\",\n  \"module\": \"dist/plugin-manager.es2015.js\",\n  \"main\": \"dist/plugin-manager.js\",\n  \"scripts\": {\n    \"build-docs\": \"esdoc\",\n    \"build\": \"rlb\",\n    \"lint\": \"eslint src/**/*.js test/*.js\",\n    \"pretest\": \"npm run lint\",\n    \"test\": \"mocha --reporter=nyan --require babel-register\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/chammyjs/plugin-manager.git\"\n  },\n  \"keywords\": [\n    \"plugin\",\n    \"chammy\",\n    \"plugin-manager\"\n  ],\n  \"author\": \"Chammy.js\",\n  \"license\": \"MIT\",\n  \"bugs\": {\n    \"url\": \"https://github.com/chammyjs/plugin-manager/issues\"\n  },\n  \"homepage\": \"https://github.com/chammyjs/plugin-manager#readme\",\n  \"devDependencies\": {\n    \"@comandeer/rollup-lib-bundler\": \"^0.3.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-register\": \"^6.26.0\",\n    \"chai\": \"^4.1.2\",\n    \"chai-as-promised\": \"^7.1.1\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.12.1\",\n    \"mocha\": \"^4.0.1\"\n  },\n  \"dependencies\": {\n    \"@chammy/plugin-helper\": \"github:chammyjs/plugin-helper\",\n    \"glob\": \"^7.1.2\"\n  }\n}\n",
+    "longname": "/home/comandeer/repos/chammy/plugin-manager/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]
