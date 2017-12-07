@@ -1,16 +1,19 @@
 {
-  "coverage": "66.66%",
+  "coverage": "88.88%",
   "expectCount": 9,
-  "actualCount": 6,
+  "actualCount": 8,
   "files": {
     "src/PluginManager.js": {
-      "expectCount": 9,
+      "expectCount": 7,
       "actualCount": 6,
       "undocumentLines": [
-        8,
-        12,
-        32
+        14
       ]
+    },
+    "src/utils.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
     }
   }
 }

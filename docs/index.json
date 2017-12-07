@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/PluginManager.js",
-    "content": "/**\n * @external {Plugin} https://github.com/chammyjs/plugin-helper\n */\n\nimport glob from 'glob';\nimport { Plugin } from '@chammy/plugin-helper';\n\nfunction isString( value ) {\n\treturn typeof value === 'string';\n}\n\nfunction makeGlobPromise( pattern, path ) {\n\treturn new Promise( ( resolve, reject ) => {\n\t\tglob( pattern, {\n\t\t\tcwd: path,\n\t\t\tabsolute: true\n\t\t}, ( err, files ) => {\n\t\t\tif ( err ) {\n\t\t\t\treject( err );\n\t\t\t}\n\n\t\t\tresolve( files );\n\t\t} );\n\t} );\n}\n\n/**\n * Simple plugin manager for Chammy.js.\n * It's responsible for finding and loading plugins.\n */\nclass PluginManager {\n\tconstructor() {\n\t\t/**\n\t\t * Iterable set of all loaded plugins.\n\t\t *\n\t\t * @type {Set<Plugin>}\n\t\t */\n\t\tthis.plugins = new Set();\n\t}\n\n\t/**\n\t * Find packages matching the given names.\n\t *\n\t * @param {string|string[]} patterns Glob patterns.\n\t * @param {string} path Path in which the search will be done.\n\t * @throws {TypeError}\n\t * @returns {Promise<string[],Error>} Promise resolving to array of paths.\n\t */\n\tfind( patterns, path = process.cwd() ) {\n\t\tif ( !isString( patterns ) && ( !Array.isArray( patterns ) || !patterns.every( isString ) ) ) {\n\t\t\tthrow new TypeError( 'pattern parameter must be a string or an array of strings' );\n\t\t}\n\n\t\tif ( !isString( path ) ) {\n\t\t\tthrow new TypeError( 'path parameter must be a string' );\n\t\t}\n\n\t\tif ( isString ( patterns ) ) {\n\t\t\tpatterns = [ patterns ];\n\t\t}\n\n\t\tconst promises = patterns.map( ( pattern ) => {\n\t\t\treturn makeGlobPromise( pattern, path );\n\t\t} );\n\n\t\treturn Promise.all( promises ).then( ( result ) => {\n\t\t\treturn result.reduce( ( all, current ) => {\n\t\t\t\treturn all.concat( current );\n\t\t\t}, [] );\n\t\t} );\n\t}\n\n\t/**\n\t * Load given plugins.\n\t *\n\t * @param {string[]} plugins Names of plugins to load.\n\t * @throws {TypeError}\n\t * @returns {Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes.\n\t */\n\tload( plugins ) {\n\t\tif ( !Array.isArray( plugins ) || !plugins.every( isString ) ) {\n\t\t\tthrow new TypeError( 'Parameter must be an array of strings' );\n\t\t}\n\n\t\tconst loaded = plugins.map( ( plugin ) => {\n\t\t\tconst module = require( plugin );\n\n\t\t\tif ( Reflect.getPrototypeOf( module ) !== Plugin ) {\n\t\t\t\treturn Promise.reject( new TypeError( 'Plugins must extend Plugin class' ) );\n\t\t\t}\n\n\t\t\tthis.plugins.add( module );\n\n\t\t\treturn module;\n\t\t} );\n\n\t\treturn Promise.all( loaded );\n\t}\n\n\t/**\n\t * Finds packages matching given patterns and loads them.\n\t *\n\t * @param {string|string[]} patterns Glob patterns.\n\t * @param {string} path Path in which the search will be done.\n\t * @returns {Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes.\n\t */\n\tfindAndLoad( patterns, path = process.cwd() ) {\n\t\treturn this.find( patterns, path ).then( ( paths ) => {\n\t\t\treturn this.load( paths );\n\t\t} );\n\t}\n\n\t/**\n\t * Allows to iterate over all plugins loaded by given\n\t * PluginManager instance.\n\t *\n\t * @returns {Iterator} Iterator for {@link PluginManager#plugins} property.\n\t */\n\t[ Symbol.iterator ]() {\n\t\treturn this.plugins[ Symbol.iterator ]();\n\t}\n}\n\nexport default PluginManager;\n",
+    "content": "/**\n * @external {Plugin} https://github.com/chammyjs/plugin-helper\n */\n\nimport { Plugin } from '@chammy/plugin-helper';\nimport { isString } from './utils.js';\nimport { makeGlobPromise } from './utils.js';\n\n/**\n * Simple plugin manager for Chammy.js.\n * It's responsible for finding and loading plugins.\n */\nclass PluginManager {\n\tconstructor() {\n\t\t/**\n\t\t * Iterable set of all loaded plugins.\n\t\t *\n\t\t * @type {Set<Plugin>}\n\t\t */\n\t\tthis.plugins = new Set();\n\t}\n\n\t/**\n\t * Find packages matching the given names.\n\t *\n\t * @param {string|string[]} patterns Glob patterns.\n\t * @param {string} path Path in which the search will be done.\n\t * @throws {TypeError}\n\t * @returns {Promise<string[],Error>} Promise resolving to array of paths.\n\t */\n\tfind( patterns, path = process.cwd() ) {\n\t\tif ( !isString( patterns ) && ( !Array.isArray( patterns ) || !patterns.every( isString ) ) ) {\n\t\t\tthrow new TypeError( 'pattern parameter must be a string or an array of strings' );\n\t\t}\n\n\t\tif ( !isString( path ) ) {\n\t\t\tthrow new TypeError( 'path parameter must be a string' );\n\t\t}\n\n\t\tif ( isString ( patterns ) ) {\n\t\t\tpatterns = [ patterns ];\n\t\t}\n\n\t\tconst promises = patterns.map( ( pattern ) => {\n\t\t\treturn makeGlobPromise( pattern, path );\n\t\t} );\n\n\t\treturn Promise.all( promises ).then( ( result ) => {\n\t\t\treturn result.reduce( ( all, current ) => {\n\t\t\t\treturn all.concat( current );\n\t\t\t}, [] );\n\t\t} );\n\t}\n\n\t/**\n\t * Load given plugins.\n\t *\n\t * @param {string[]} plugins Names of plugins to load.\n\t * @throws {TypeError}\n\t * @returns {Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes.\n\t */\n\tload( plugins ) {\n\t\tif ( !Array.isArray( plugins ) || !plugins.every( isString ) ) {\n\t\t\tthrow new TypeError( 'Parameter must be an array of strings' );\n\t\t}\n\n\t\tconst loaded = plugins.map( ( plugin ) => {\n\t\t\tconst module = require( plugin );\n\n\t\t\tif ( Reflect.getPrototypeOf( module ) !== Plugin ) {\n\t\t\t\treturn Promise.reject( new TypeError( 'Plugins must extend Plugin class' ) );\n\t\t\t}\n\n\t\t\tthis.plugins.add( module );\n\n\t\t\treturn module;\n\t\t} );\n\n\t\treturn Promise.all( loaded );\n\t}\n\n\t/**\n\t * Finds packages matching given patterns and loads them.\n\t *\n\t * @param {string|string[]} patterns Glob patterns.\n\t * @param {string} path Path in which the search will be done.\n\t * @returns {Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes.\n\t */\n\tfindAndLoad( patterns, path = process.cwd() ) {\n\t\treturn this.find( patterns, path ).then( ( paths ) => {\n\t\t\treturn this.load( paths );\n\t\t} );\n\t}\n\n\t/**\n\t * Allows to iterate over all plugins loaded by given\n\t * PluginManager instance.\n\t *\n\t * @returns {Iterator} Iterator for {@link PluginManager#plugins} property.\n\t */\n\t[ Symbol.iterator ]() {\n\t\treturn this.plugins[ Symbol.iterator ]();\n\t}\n}\n\nexport default PluginManager;\n",
     "static": true,
     "longname": "/home/comandeer/repos/chammy/plugin-manager/src/PluginManager.js",
     "access": "public",
@@ -588,74 +588,6 @@
   },
   {
     "__docId__": 50,
-    "kind": "function",
-    "name": "isString",
-    "memberof": "src/PluginManager.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/PluginManager.js~isString",
-    "access": "public",
-    "export": false,
-    "importPath": "@chammy/plugin-manager/src/PluginManager.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 8,
-    "undocument": true,
-    "params": [
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 51,
-    "kind": "function",
-    "name": "makeGlobPromise",
-    "memberof": "src/PluginManager.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/PluginManager.js~makeGlobPromise",
-    "access": "public",
-    "export": false,
-    "importPath": "@chammy/plugin-manager/src/PluginManager.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 12,
-    "undocument": true,
-    "params": [
-      {
-        "name": "pattern",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "path",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 52,
     "kind": "class",
     "name": "PluginManager",
     "memberof": "src/PluginManager.js",
@@ -666,11 +598,11 @@
     "importPath": "@chammy/plugin-manager/src/PluginManager.js",
     "importStyle": "PluginManager",
     "description": "Simple plugin manager for Chammy.js.\nIt's responsible for finding and loading plugins.",
-    "lineNumber": 31,
+    "lineNumber": 13,
     "interface": false
   },
   {
-    "__docId__": 53,
+    "__docId__": 51,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/PluginManager.js~PluginManager",
@@ -680,11 +612,11 @@
     "longname": "src/PluginManager.js~PluginManager#constructor",
     "access": "public",
     "description": null,
-    "lineNumber": 32,
+    "lineNumber": 14,
     "undocument": true
   },
   {
-    "__docId__": 54,
+    "__docId__": 52,
     "kind": "member",
     "name": "plugins",
     "memberof": "src/PluginManager.js~PluginManager",
@@ -692,7 +624,7 @@
     "longname": "src/PluginManager.js~PluginManager#plugins",
     "access": "public",
     "description": "Iterable set of all loaded plugins.",
-    "lineNumber": 38,
+    "lineNumber": 20,
     "type": {
       "nullable": null,
       "types": [
@@ -703,7 +635,7 @@
     }
   },
   {
-    "__docId__": 55,
+    "__docId__": 53,
     "kind": "method",
     "name": "find",
     "memberof": "src/PluginManager.js~PluginManager",
@@ -713,7 +645,7 @@
     "longname": "src/PluginManager.js~PluginManager#find",
     "access": "public",
     "description": "Find packages matching the given names.",
-    "lineNumber": 49,
+    "lineNumber": 31,
     "unknown": [
       {
         "tagName": "@returns",
@@ -761,7 +693,7 @@
     ]
   },
   {
-    "__docId__": 56,
+    "__docId__": 54,
     "kind": "method",
     "name": "load",
     "memberof": "src/PluginManager.js~PluginManager",
@@ -771,7 +703,7 @@
     "longname": "src/PluginManager.js~PluginManager#load",
     "access": "public",
     "description": "Load given plugins.",
-    "lineNumber": 80,
+    "lineNumber": 62,
     "unknown": [
       {
         "tagName": "@returns",
@@ -808,7 +740,7 @@
     ]
   },
   {
-    "__docId__": 57,
+    "__docId__": 55,
     "kind": "method",
     "name": "findAndLoad",
     "memberof": "src/PluginManager.js~PluginManager",
@@ -818,7 +750,7 @@
     "longname": "src/PluginManager.js~PluginManager#findAndLoad",
     "access": "public",
     "description": "Finds packages matching given patterns and loads them.",
-    "lineNumber": 107,
+    "lineNumber": 89,
     "unknown": [
       {
         "tagName": "@returns",
@@ -858,7 +790,7 @@
     }
   },
   {
-    "__docId__": 58,
+    "__docId__": 56,
     "kind": "method",
     "name": "[Symbol.iterator]",
     "memberof": "src/PluginManager.js~PluginManager",
@@ -868,7 +800,7 @@
     "longname": "src/PluginManager.js~PluginManager#[Symbol.iterator]",
     "access": "public",
     "description": "Allows to iterate over all plugins loaded by given\nPluginManager instance.",
-    "lineNumber": 119,
+    "lineNumber": 101,
     "unknown": [
       {
         "tagName": "@returns",
@@ -886,7 +818,7 @@
     "params": []
   },
   {
-    "__docId__": 59,
+    "__docId__": 57,
     "kind": "file",
     "name": "src/index.js",
     "content": "import PluginManager from './PluginManager.js';\n\nexport default PluginManager;\n",
@@ -895,6 +827,111 @@
     "access": "public",
     "description": null,
     "lineNumber": 1
+  },
+  {
+    "__docId__": 58,
+    "kind": "file",
+    "name": "src/utils.js",
+    "content": "import glob from 'glob';\n\n/**\n * Check if given parameter is a string.\n *\n * @private\n * @param {mixed} value Value to be checked.\n * @returns {boolean} Return true if passed value is a string,\n * false otherwise.\n */\nfunction isString( value ) {\n\treturn typeof value === 'string';\n}\n\n/**\n * Wrap glob invocation into {@link Promise}.\n *\n * @private\n * @param {string} pattern Glob pattern.\n * @param {string} path Path, in which search should begin.\n * @returns {Promise<string[],Error>} Promise resolving to found\n * file paths.\n */\nfunction makeGlobPromise( pattern, path ) {\n\treturn new Promise( ( resolve, reject ) => {\n\t\tglob( pattern, {\n\t\t\tcwd: path,\n\t\t\tabsolute: true\n\t\t}, ( err, files ) => {\n\t\t\tif ( err ) {\n\t\t\t\treject( err );\n\t\t\t}\n\n\t\t\tresolve( files );\n\t\t} );\n\t} );\n}\n\nexport { isString };\nexport { makeGlobPromise };\n",
+    "static": true,
+    "longname": "/home/comandeer/repos/chammy/plugin-manager/src/utils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 59,
+    "kind": "function",
+    "name": "isString",
+    "memberof": "src/utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils.js~isString",
+    "access": "private",
+    "export": true,
+    "importPath": "@chammy/plugin-manager/src/utils.js",
+    "importStyle": "{isString}",
+    "description": "Check if given parameter is a string.",
+    "lineNumber": 11,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean} Return true if passed value is a string,\nfalse otherwise."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "mixed"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Value to be checked."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "Return true if passed value is a string,\nfalse otherwise."
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "function",
+    "name": "makeGlobPromise",
+    "memberof": "src/utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils.js~makeGlobPromise",
+    "access": "private",
+    "export": true,
+    "importPath": "@chammy/plugin-manager/src/utils.js",
+    "importStyle": "{makeGlobPromise}",
+    "description": "Wrap glob invocation into {@link Promise}.",
+    "lineNumber": 24,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<string[],Error>} Promise resolving to found\nfile paths."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "pattern",
+        "description": "Glob pattern."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": "Path, in which search should begin."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string[],Error>"
+      ],
+      "spread": false,
+      "description": "Promise resolving to found\nfile paths."
+    }
   },
   {
     "kind": "index",
