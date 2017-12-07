@@ -50,6 +50,6 @@ describe( 'makeGlobPromise', () => {
 
 	it( 'rejects when path is not provided', () => {
 		return expect( makeGlobPromise( '' ) ).
-			to.be.eventually.rejectedWith( Error, 'The "path" argument must be of type string' );
+			to.be.eventually.rejectedWith( Error );
 	} );
 } );
