@@ -1,8 +1,9 @@
-const PluginManager = require( '../src/PluginManager' );
-const { Plugin } = require( '@chammy/plugin-helper' );
-const chai = require( 'chai' );
-const chaiAsPromised = require( 'chai-as-promised' );
-const { join } = require( 'path' );
+import PluginManager from '../src/PluginManager.js';
+import { Plugin } from '@chammy/plugin-helper';
+import chai from 'chai';
+import chaiAsPromised from 'chai-as-promised';
+import { join } from 'path';
+
 const expect = chai.expect;
 
 chai.use( chaiAsPromised );

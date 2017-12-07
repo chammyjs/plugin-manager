@@ -1,5 +1,5 @@
-const glob = require( 'glob' );
-const { Plugin } = require( '@chammy/plugin-helper' );
+import glob from 'glob';
+import { Plugin } from '@chammy/plugin-helper';
 
 function isString( value ) {
 	return typeof value === 'string';
@@ -100,4 +100,4 @@ class PluginManager {
 	}
 }
 
-module.exports = PluginManager;
+export default PluginManager;
