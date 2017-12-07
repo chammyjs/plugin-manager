@@ -6,6 +6,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@chammy/plugin-manager/src/utils.js~isstring",
+    "function/index.html#static-function-isString",
+    "<span>isString</span> <span class=\"search-result-import-path\">@chammy/plugin-manager/src/utils.js</span>",
+    "function"
+  ],
+  [
+    "@chammy/plugin-manager/src/utils.js~makeglobpromise",
+    "function/index.html#static-function-makeGlobPromise",
+    "<span>makeGlobPromise</span> <span class=\"search-result-import-path\">@chammy/plugin-manager/src/utils.js</span>",
+    "function"
+  ],
+  [
     "src/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "src/.external-ecmascript.js~Array",
@@ -339,6 +351,12 @@ window.esdocSearchIndex = [
     "src/index.js",
     "file/src/index.js.html",
     "src/index.js",
+    "file"
+  ],
+  [
+    "src/utils.js",
+    "file/src/utils.js.html",
+    "src/utils.js",
     "file"
   ]
 ]

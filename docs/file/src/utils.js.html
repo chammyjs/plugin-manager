@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | @chammy/plugin-manager</title>
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/utils.js | @chammy/plugin-manager</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -37,12 +37,49 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="-chammy-plugin-manager">@chammy/plugin-manager</h1><p><a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/chammyjs/plugin-manager.svg" alt="Greenkeeper badge"></a>
-<a href="https://david-dm.org/chammyjs/plugin-manager"><img src="https://david-dm.org/chammyjs/plugin-manager/status.svg" alt="dependencies Status"></a>
-<a href="https://david-dm.org/chammyjs/plugin-manager?type=dev"><img src="https://david-dm.org/chammyjs/plugin-manager/dev-status.svg" alt="devDependencies Status"></a>
-<a href="https://travis-ci.org/chammyjs/plugin-manager"><img src="https://travis-ci.org/chammyjs/plugin-manager.svg?branch=master" alt="Build Status"></a></p>
-<p>Simple plugin manager for <a href="https://github.com/chammyjs/chammy">Chammy.js</a>.</p>
-</div>
+<div class="content" data-ice="content"><h1 data-ice="title">src/utils.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import glob from &apos;glob&apos;;
+
+/**
+ * Check if given parameter is a string.
+ *
+ * @private
+ * @param {mixed} value Value to be checked.
+ * @returns {boolean} Return true if passed value is a string,
+ * false otherwise.
+ */
+function isString( value ) {
+	return typeof value === &apos;string&apos;;
+}
+
+/**
+ * Wrap glob invocation into {@link Promise}.
+ *
+ * @private
+ * @param {string} pattern Glob pattern.
+ * @param {string} path Path, in which search should begin.
+ * @returns {Promise&lt;string[],Error&gt;} Promise resolving to found
+ * file paths.
+ */
+function makeGlobPromise( pattern, path ) {
+	return new Promise( ( resolve, reject ) =&gt; {
+		glob( pattern, {
+			cwd: path,
+			absolute: true
+		}, ( err, files ) =&gt; {
+			if ( err ) {
+				reject( err );
+			}
+
+			resolve( files );
+		} );
+	} );
+}
+
+export { isString };
+export { makeGlobPromise };
+</code></pre>
+
 </div>
 
 <footer class="footer">
