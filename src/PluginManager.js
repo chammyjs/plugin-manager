@@ -1,3 +1,7 @@
+/**
+ * @external {Plugin} https://github.com/chammyjs/plugin-helper
+ */
+
 import glob from 'glob';
 import { Plugin } from '@chammy/plugin-helper';
 
@@ -20,17 +24,27 @@ function makeGlobPromise( pattern, path ) {
 	} );
 }
 
+/**
+ * Simple plugin manager for Chammy.js.
+ * It's responsible for finding and loading plugins.
+ */
 class PluginManager {
 	constructor() {
+		/**
+		 * Iterable set of all loaded plugins.
+		 *
+		 * @type {Set<Plugin>}
+		 */
 		this.plugins = new Set();
 	}
 
 	/**
 	 * Find packages matching the given names.
 	 *
-	 * @param {string/string[]} patterns Glob patterns.
+	 * @param {string|string[]} patterns Glob patterns.
 	 * @param {string} path Path in which the search will be done.
-	 * @returns {Promise} Promise resolving to array of paths.
+	 * @throws {TypeError}
+	 * @returns {Promise<string[],Error>} Promise resolving to array of paths.
 	 */
 	find( patterns, path = process.cwd() ) {
 		if ( !isString( patterns ) && ( !Array.isArray( patterns ) || !patterns.every( isString ) ) ) {
@@ -60,7 +74,8 @@ class PluginManager {
 	 * Load given plugins.
 	 *
 	 * @param {string[]} plugins Names of plugins to load.
-	 * @returns {Promise} Promise resolving to array of plugin classes.
+	 * @throws {TypeError}
+	 * @returns {Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes.
 	 */
 	load( plugins ) {
 		if ( !Array.isArray( plugins ) || !plugins.every( isString ) ) {
@@ -85,9 +100,9 @@ class PluginManager {
 	/**
 	 * Finds packages matching given patterns and loads them.
 	 *
-	 * @param {string/string[]} patterns Glob patterns.
+	 * @param {string|string[]} patterns Glob patterns.
 	 * @param {string} path Path in which the search will be done.
-	 * @returns {Promise} Promise resolving to array of plugin classes.
+	 * @returns {Promise<Plugin[],TypeError>} Promise resolving to array of plugin classes.
 	 */
 	findAndLoad( patterns, path = process.cwd() ) {
 		return this.find( patterns, path ).then( ( paths ) => {
@@ -95,6 +110,12 @@ class PluginManager {
 		} );
 	}
 
+	/**
+	 * Allows to iterate over all plugins loaded by given
+	 * PluginManager instance.
+	 *
+	 * @returns {Iterator} Iterator for {@link PluginManager#plugins} property.
+	 */
 	[ Symbol.iterator ]() {
 		return this.plugins[ Symbol.iterator ]();
 	}
