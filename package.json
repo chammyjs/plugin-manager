@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@chammy/plugin-helper": "github:chammyjs/plugin-helper",
+    "@comandeer/rollup-lib-bundler": "^0.3.0",
     "glob": "^7.1.2"
   }
 }
