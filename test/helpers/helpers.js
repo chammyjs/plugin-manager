@@ -53,8 +53,17 @@ function getPath( name ) {
 	return `${ join(  __dirname, '..', name ) }`;
 }
 
+function createReturnValueTest( { values = [], test, expected } = {} ) {
+	return () => {
+		values.forEach( ( value ) => {
+			expect( test( value ) ).to.deep.equal( expected );
+		} );
+	};
+}
+
 export { createParameterTest };
 export { createMethodTest };
 export { createLoadTest };
 export { createFindPathTest };
 export { getPath };
+export { createReturnValueTest };
