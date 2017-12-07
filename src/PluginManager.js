@@ -2,27 +2,9 @@
  * @external {Plugin} https://github.com/chammyjs/plugin-helper
  */
 
-import glob from 'glob';
 import { Plugin } from '@chammy/plugin-helper';
-
-function isString( value ) {
-	return typeof value === 'string';
-}
-
-function makeGlobPromise( pattern, path ) {
-	return new Promise( ( resolve, reject ) => {
-		glob( pattern, {
-			cwd: path,
-			absolute: true
-		}, ( err, files ) => {
-			if ( err ) {
-				reject( err );
-			}
-
-			resolve( files );
-		} );
-	} );
-}
+import { isString } from './utils.js';
+import { makeGlobPromise } from './utils.js';
 
 /**
  * Simple plugin manager for Chammy.js.
