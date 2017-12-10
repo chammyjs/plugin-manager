@@ -1,6 +1,6 @@
 {
   "name": "@chammy/plugin-manager",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Simple plugin manager for Chammy.js",
   "module": "dist/plugin-manager.es2015.js",
   "main": "dist/plugin-manager.js",
