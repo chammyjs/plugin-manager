@@ -9,7 +9,8 @@
     "build": "rlb",
     "lint": "eslint src/**/*.js test/*.js",
     "pretest": "npm run lint",
-    "test": "mocha --reporter=nyan --require babel-register"
+    "test": "nyc mocha --reporter=nyan --require babel-register",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
     "type": "git",
