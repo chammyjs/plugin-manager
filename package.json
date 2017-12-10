@@ -46,7 +46,7 @@
     "nyc": "^11.3.0"
   },
   "dependencies": {
-    "@chammy/plugin-helper": "github:chammyjs/plugin-helper",
+    "@chammy/plugin-helper": "^0.1.0",
     "glob": "^7.1.2"
   }
 }
