@@ -80,7 +80,7 @@ class PluginManager {
 	}
 
 	/**
-	 * Finds packages matching given patterns and loads them.
+	 * Find packages matching given patterns and load them.
 	 *
 	 * @param {string|string[]} patterns Glob patterns.
 	 * @param {string} path Path in which the search will be done.
