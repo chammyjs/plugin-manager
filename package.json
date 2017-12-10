@@ -18,6 +18,9 @@
     "type": "git",
     "url": "git+https://github.com/chammyjs/plugin-manager.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "plugin",
     "chammy",
