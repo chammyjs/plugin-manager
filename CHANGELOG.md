@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 * Add changelog.
 
+### Fixed
+* [#30]: Wrong version of library in banner comment of distributed package.
+
 ## 0.1.0 – 2017-12-10
 ### Added
 * First working version, yay!
