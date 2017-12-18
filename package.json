@@ -11,7 +11,7 @@
     "pretest": "npm run lint",
     "test": "nyc mocha --reporter=nyan --require babel-register",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "preversion": "npm test && npm run build && npm run build-docs && git add -f dist/ && git add -f docs/",
+    "version": "npm test && npm run build && npm run build-docs && git add -f dist/ && git add -f docs/",
     "postversion": "git rm -r --cached dist/ && git commit -m \"chore(dist): clean after release [ci skip]\" && git push origin && git push origin --tags"
   },
   "repository": {
