@@ -18,4 +18,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * First working version, yay!
 
 
-[0.2.0]: https://github.com/chammyjs/plugin-helper/compare/v0.1.0...v0.2.0
+[#30]: https://github.com/chammyjs/plugin-manager/issues/30
+
+[0.2.0]: https://github.com/chammyjs/plugin-manager/compare/v0.1.0...v0.2.0
