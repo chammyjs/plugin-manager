@@ -52,4 +52,9 @@ describe( 'makeGlobPromise', () => {
 		return expect( makeGlobPromise( '' ) ).
 			to.be.eventually.rejectedWith( Error );
 	} );
+
+	it( 'rejects when path is not pointing to the directory', () => {
+		return expect( makeGlobPromise( '*', getPath( './fixtures/invalid.js' ) ) ).
+			to.be.eventually.rejectedWith( Error );
+	} );
 } );
