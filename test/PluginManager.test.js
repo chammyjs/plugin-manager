@@ -143,6 +143,15 @@ describe( 'PluginManager', () => {
 	} );
 
 	describe( 'findAndLoad', () => {
+		it( 'searches through CWD when no path is provided', () => {
+			const pluginManager = new PluginManager();
+
+			return pluginManager.findAndLoad( '@test/*/' ).then( ( plugins ) => {
+				expect( plugins ).to.be.an( 'array' );
+				expect( plugins ).to.have.lengthOf( 0 );
+			} );
+		} );
+
 		it( 'returns Promise with resolved modules array', () => {
 			const pluginManager = new PluginManager();
 
