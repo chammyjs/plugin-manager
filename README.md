@@ -7,3 +7,5 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@chammy/plugin-manager.svg)](https://npmjs.com/package/@chammy/plugin-manager)
 
 Simple plugin manager for [Chammy.js](https://github.com/chammyjs/chammy).
+
+**:rotating_light: [WE MOVED TO GITLAB](https://gitlab.com/chammyjs/plugin-manager) :rotating_light:**
